@@ -41,20 +41,3 @@ jobs:
       - name: Test with Rspec
         run: |
           bundle exec rspec
-
-    # steps:
-    #   - uses: actions/checkout@v1
-    #   - name: Set up Ruby 2.7
-    #     uses: ruby/setup-ruby@v1
-    #     with:
-    #       ruby-version: 2.7.0
-    #   - name: Setup YARN and NodeJS
-    #     run: |
-    #       sudo curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
-    #       sudo echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
-    #       sudo curl -sL https://deb.nodesource.com/setup_12.x | bash -
-    #       sudo apt install -y nodejs yarn
-    #   - name: Build and setup
-    #     run: |
-    #       bundle install --jobs 4 --retry 3
-    #       bundle exec rails yarn:install db:setup assets:precompile
