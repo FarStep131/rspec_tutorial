@@ -24,6 +24,7 @@ jobs:
           ruby-version: 2.7.0
       - name: Test with RSpec
         run: |
+          rm Gemfile.lock
           gem install bundler
           bundle install --jobs 4 --retry 3
           bundle exec rspec
