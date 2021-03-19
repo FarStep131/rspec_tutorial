@@ -18,6 +18,14 @@ jobs:
       image: ruby:2.7.0
     steps:
       - uses: actions/checkout@v1
+      - uses: actions/cache@v1
+        with:
+          path: vendor/bundle
+          key: bundle-${{ hashFiles('**/Gemfile.lock') }}
+      - uses: actions/cache@v1
+        with:
+          path: node_modules
+          key: yarn-${{ hashFiles('**/yarn.lock') }}
       - name: Set up node and yarn
         run: |
           curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
