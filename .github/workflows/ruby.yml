@@ -12,25 +12,41 @@ on:
     branches: [main]
 
 jobs:
-  test:
-    name: Run spec
+  build:
     runs-on: ubuntu-latest
-
+    container:
+      image: ruby:2.7.0
     steps:
       - uses: actions/checkout@v1
-      - name: Set up Ruby 2.7
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: 2.7.0
-      - name: Setup YARN and NodeJS
+      - name: Set up node and yarn
         run: |
-          sudo curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
-          sudo echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
-          sudo curl -sL https://deb.nodesource.com/setup_12.x | bash -
-          sudo apt install -y nodejs yarn
+          curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+          echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+          curl -sL https://deb.nodesource.com/setup_12.x | bash -
+          apt install -y nodejs yarn
       - name: Build and setup
         run: |
-          bundle install --jobs 4 --retry 3
-          bundle exec rails yarn:install db:setup assets:precompile
-      - name: Exec tests
-        run: bundle exec rake
+          bundle -j 4
+          bin/rails yarn:install db:setup assets:precompile
+    # test:
+    #   name: Run RSpec
+    #   runs-on: ubuntu-latest
+
+    # steps:
+    #   - uses: actions/checkout@v1
+    #   - name: Set up Ruby 2.7
+    #     uses: ruby/setup-ruby@v1
+    #     with:
+    #       ruby-version: 2.7.0
+    #   - name: Setup YARN and NodeJS
+    #     run: |
+    #       sudo curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+    #       sudo echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+    #       sudo curl -sL https://deb.nodesource.com/setup_12.x | bash -
+    #       sudo apt install -y nodejs yarn
+    #   - name: Build and setup
+    #     run: |
+    #       bundle install --jobs 4 --retry 3
+    #       bundle exec rails yarn:install db:setup assets:precompile
+    #   - name: Exec tests
+    #     run: bundle exec rake
