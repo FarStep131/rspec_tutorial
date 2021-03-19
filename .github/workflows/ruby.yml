@@ -36,7 +36,7 @@ jobs:
           apt install -y nodejs yarn
       - name: Build and setup
         run: |
-          bundle -j 4
+          bundle --path vendor/bundle
           bin/rails yarn:install db:setup assets:precompile
       - name: Test with Rspec
         run: |
