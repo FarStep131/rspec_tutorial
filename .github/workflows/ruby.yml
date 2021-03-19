@@ -26,8 +26,8 @@ jobs:
         run: |
           curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
           echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
-          curl -sL https://deb.nodesource.com/setup_13.x | bash -
-          apt-get install -y yarn nodejs
+          apt-get update -qq
+          apt-get install -y nodejs yarn
       - name: Build and setup
         run: |
           bundle install --jobs 4 --retry 3
