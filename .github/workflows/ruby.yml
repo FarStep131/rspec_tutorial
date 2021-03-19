@@ -34,8 +34,9 @@ jobs:
           apt install -y nodejs yarn
       - name: Build and setup
         run: |
-          bundle -j 4
-          bin/rails yarn:install db:setup assets:precompile
+          bundle install
+          bundle exec rails db:create
+          bundle exec rails db:migrate
       - name: Test with Rspec
         run: |
           bundle exec rspec
@@ -59,3 +60,5 @@ jobs:
     #     run: |
     #       bundle install --jobs 4 --retry 3
     #       bundle exec rails yarn:install db:setup assets:precompile
+    # bundle -j 4
+    # bin/rails yarn:install db:setup assets:precompile
