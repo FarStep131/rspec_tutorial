@@ -24,10 +24,10 @@ jobs:
           ruby-version: 2.7.0
       - name: Setup YARN and NodeJS
         run: |
-        curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
-        echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
-        curl -sL https://deb.nodesource.com/setup_12.x | bash -
-        apt install -y nodejs yarn
+          curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+          echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+          curl -sL https://deb.nodesource.com/setup_12.x | bash -
+          apt install -y nodejs yarn
       - name: Build and setup
         run: |
           bundle install --jobs 4 --retry 3
