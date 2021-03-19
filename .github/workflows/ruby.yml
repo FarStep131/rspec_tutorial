@@ -28,6 +28,9 @@ jobs:
         run: |
           bundle -j 4
           bin/rails yarn:install db:setup assets:precompile
+      - name: Test with Rspec
+        run: |
+          bundle exec rspec
     # test:
     #   name: Run RSpec
     #   runs-on: ubuntu-latest
