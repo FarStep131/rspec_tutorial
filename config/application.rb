@@ -34,5 +34,18 @@ module Hello
     origins = ENV.fetch("ACTION_CABLE_ALLOWED_REQUEST_ORIGINS") { "http:\/\/localhost*" }.split(",")
     origins.map! { |url| /#{url}/ }
     config.action_cable.allowed_request_origins = origins
+
+    # Customizing Rails Generators
+    config.generators do |g|
+      g.assets false # CSSやJavaScriptファイルを生成しない
+      g.helper false # ヘルパーを生成しない
+      g.jbuilder false # .json.jbuilderファイルを生成しない
+      g.test_framework :rspec, # テストフレームワークとしてRSpecを指定
+        fixtures: false, # テストデータを作るfixtureを作成しない
+        request_specs: false, # リクエストスペックを作成しない
+        view_specs: false, # ビュー用のスペックを作成しない
+        helper_specs: false, # ヘルパー用のスペックを作成しない
+        routing_specs: false # ルーティングのスペックを作成しない
+    end
   end
 end

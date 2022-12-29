@@ -88,7 +88,15 @@ GEM
       railties (>= 6.0.0)
     date (3.3.3)
     debug (1.7.1)
+    diff-lcs (1.5.0)
     erubi (1.12.0)
+    factory_bot (6.2.1)
+      activesupport (>= 5.0.0)
+    factory_bot_rails (6.2.0)
+      factory_bot (~> 6.2.0)
+      railties (>= 5.0.0)
+    faker (3.1.0)
+      i18n (>= 1.8.11, < 2)
     globalid (1.0.0)
       activesupport (>= 5.0)
     i18n (1.12.0)
@@ -169,6 +177,23 @@ GEM
       connection_pool
     regexp_parser (2.6.1)
     rexml (3.2.5)
+    rspec-core (3.12.0)
+      rspec-support (~> 3.12.0)
+    rspec-expectations (3.12.1)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.12.0)
+    rspec-mocks (3.12.1)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.12.0)
+    rspec-rails (6.0.1)
+      actionpack (>= 6.1)
+      activesupport (>= 6.1)
+      railties (>= 6.1)
+      rspec-core (~> 3.11)
+      rspec-expectations (~> 3.11)
+      rspec-mocks (~> 3.11)
+      rspec-support (~> 3.11)
+    rspec-support (3.12.0)
     rubyzip (2.3.2)
     selenium-webdriver (4.7.1)
       rexml (~> 3.2, >= 3.2.5)
@@ -221,6 +246,8 @@ DEPENDENCIES
   capybara
   cssbundling-rails
   debug
+  factory_bot_rails
+  faker
   jbuilder
   jsbundling-rails
   pg (~> 1.1)
@@ -228,6 +255,7 @@ DEPENDENCIES
   rack-mini-profiler
   rails (~> 7.0.4)
   redis (~> 5.0)
+  rspec-rails
   selenium-webdriver
   sidekiq (~> 7.0)
   sprockets-rails
