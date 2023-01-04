@@ -1,0 +1,14 @@
+<div class="mb-8 text-center">
+  <span class="text-3xl font-bold">
+    Editing tweet
+  </span>
+</div>
+
+<%= render "form", tweet: @tweet %>
+
+<br>
+
+<div class="text-center">
+  <%= link_to "Show this tweet", @tweet %> |
+  <%= link_to "Back to tweets", tweets_path %>
+</div>

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :tweets
   root to: "pages#home"
 
   get "/up/", to: "up#index", as: :up

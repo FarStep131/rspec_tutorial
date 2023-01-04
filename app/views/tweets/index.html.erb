@@ -1,0 +1,41 @@
+<div class="mb-8 text-center">
+  <span class="text-3xl font-bold">
+    Tweets
+  </span>
+</div>
+
+<div class="flex flex-wrap">
+  <div class="flex-none w-full px-6">
+    <%= link_to new_tweet_path, class: "mb-4 inline-flex items-center justify-center rounded-md bg-indigo-500 p-3 text-white duration-100 ease-in-out hover:bg-indigo-600 focus:outline-none" do %>
+      New tweet
+    <% end %>
+    <div class="relative flex flex-col min-w-0 mb-6 break-words bg-white border-0 border-transparent border-solid shadow-soft-xl rounded-2xl bg-clip-border">
+      <div class="flex-auto pb-2">
+        <div class="p-0 overflow-x-auto">
+          <table class="items-center w-full align-top border-gray-200 text-slate-500">
+            <thead class="align-bottom">
+              <tr>
+                <th class="p-3 font-bold text-left uppercase align-middle bg-transparent border-b border-gray-200 shadow-none text-lg border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">Content</th>
+                <th class="p-3 bg-transparent border-b border-gray-200 border-solid"></th>
+              </tr>
+            </thead>
+            <tbody class="align-bottom">
+              <% @tweets.each do |tweet| %>
+                <tr>
+                  <td class="p-3 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
+                    <p class="font-semibold leading-tight text-md"><%= tweet.content %></p>
+                  </td>
+                  <td class="p-3 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
+                    <%= link_to tweet, class: "font-semibold leading-tight text-md text-slate-400" do %>
+                      Show this tweet
+                    <% end %>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
